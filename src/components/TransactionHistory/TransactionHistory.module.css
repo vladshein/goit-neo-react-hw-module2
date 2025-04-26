@@ -1,0 +1,36 @@
+.table {
+  font-size: 16px;
+  border: 1px solid black;
+  margin: 0 auto;
+  border-collapse: collapse; /* Ensures borders don't double up */
+  width: 100%; /* Optional: Makes the table span the full width */
+  max-width: 800px;
+}
+
+.tableRowHead {
+  background-color: black;
+  color: aliceblue;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.tableRow {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+}
+
+/* .tableRowDark {
+  background-color: lightgrey;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+} */
+
+.tableRow.light {
+  background-color: white;
+}
+.tableRow.dark {
+  background-color: lightgrey;
+}

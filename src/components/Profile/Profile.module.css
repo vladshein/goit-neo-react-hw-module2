@@ -1,0 +1,73 @@
+.profile {
+  width: 500px;
+  /* height: 500px; */
+  background-color: white;
+  padding: 30px;
+  border: 1px solid black;
+  margin: 30px auto;
+}
+
+.profileImageText {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  gap: 12px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+}
+.profileImage {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border-color: black;
+  background-color: sienna;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.profileName {
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: black;
+}
+
+.profileStats {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  background-color: grey;
+}
+
+.profileStats li {
+  position: relative;
+  padding: 0 40px;
+}
+
+.profileList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileStats li:not(:last-child)::after {
+  content: ""; /* Add a vertical line */
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #000; /* Line color */
+}
