@@ -7,17 +7,17 @@ import TransactionHistory from "./TransactionHistory/TransactionHistory";
 const App = () => {
   return (
     <>
-      <Profile
+      {/* <Profile
         name={userData.username}
         tag={userData.tag}
         location={userData.location}
         image={userData.avatar}
         stats={userData.stats}
-      />
+      /> */}
 
-      <FriendList friends={friends} />
+      {/* <FriendList friends={friends} />
       {console.log(transactions)}
-      <TransactionHistory items={transactions} />
+      <TransactionHistory items={transactions} /> */}
     </>
   );
 };
