@@ -1,23 +1,56 @@
-import Profile from "./Profile/Profile";
-import FriendList from "./FriendList/FriendList";
-import userData from "../userData.json";
-import friends from "../friends.json";
-import transactions from "../transactions.json";
-import TransactionHistory from "./TransactionHistory/TransactionHistory";
+import { useState, useEffect } from "react";
+import Description from "./Description/Description";
+import Options from "./Options/Options";
+import Feedback from "./Feedback/Feedback";
+import Notifications from "./Notifications/Notifications";
+
 const App = () => {
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = window.localStorage.getItem("feedback");
+
+    if (savedFeedback !== null) {
+      return JSON.parse(savedFeedback);
+    }
+
+    return { good: 0, neutral: 0, bad: 0 };
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("feedback", JSON.stringify(feedback));
+  }, [feedback]);
+
+  const updateFeedback = feedbackType => {
+    setFeedback(prevFeedback => ({
+      ...prevFeedback,
+      [feedbackType]: prevFeedback[feedbackType] + 1,
+    }));
+  };
+
+  const resetFeedback = () => {
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
+
+  let totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+
   return (
     <>
-      {/* <Profile
-        name={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        image={userData.avatar}
-        stats={userData.stats}
-      /> */}
-
-      {/* <FriendList friends={friends} />
-      {console.log(transactions)}
-      <TransactionHistory items={transactions} /> */}
+      <Description />
+      <Options
+        state={feedback}
+        total={totalFeedback}
+        update={updateFeedback}
+        reset={resetFeedback}
+      />
+      {totalFeedback ? (
+        <Feedback state={feedback} total={totalFeedback} />
+      ) : (
+        <Notifications />
+      )}
+      {console.log("In between")}
     </>
   );
 };
